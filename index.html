@@ -1,0 +1,32 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <input type="text" name="inputform" id="textbox" value="David">
+
+    <br>
+    <br>
+
+    <button onclick="predict_age()"> Predict my age! </button>
+    <p id='response'> </p>
+
+
+</body>
+
+
+<script>
+
+    async function predict_age() {
+        let name = document.getElementById("textbox").value
+        let response = await fetch(`https://api.agify.io/?name=${name}`);
+        let data = await response.json();
+        console.log(data['age']);
+        document.getElementById('response').innerHTML = data['age'];
+    }
+
+</script>
+
+
+</html>
